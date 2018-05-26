@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="SessionFactory">
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.password">369456</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/test</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.provider_class"> org.hibernate.cache.NoCacheProvider</property>
+		<mapping class="com.library.model.AdminData" />
+		<mapping class="com.library.model.AvailableBooks" />
+		<mapping class="com.library.model.BranchType" />
+		<mapping class="com.library.model.StudentData" />
+		<mapping class="com.library.model.StudentIssuedData" />
+		<mapping class="com.library.model.TotalIssuedBooks"/>
+		<mapping class="com.library.model.AdminData"/>
+		<mapping class="com.library.model.StudentWishlist"/>
+		<mapping class="com.library.model.TotalReturnedBooks"/>
+	</session-factory>
+</hibernate-configuration>
+

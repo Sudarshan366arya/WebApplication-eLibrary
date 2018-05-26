@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false"/>
+	<package name="default" extends="struts-default" namespace="/">     
+		
+	<action name="adminLogin" class="com.library.view.LibraryAction" method="loginOfAdmin">
+		<result name="success">successAdminLogin.jsp</result>
+		<result name="login">errorAdminLogin.jsp</result>
+		<result name="error">errorAdminLogin.jsp</result>
+	</action>
+	<action name="adminLogout" class="com.library.view.AdminLogoutAction">
+		<result name="success">index.jsp</result>
+	</action>	
+		
+		<!--  
+		<action name="adminLogin" class="com.library.view.LibraryAction" method="loginOfAdmin">
+			<result name="success" type="redirectAsction">
+			   <param name="actionName">successAdminLogin</param>
+			   <param name="namespace">/</param>
+			</result>
+			<result name="input">login.jsp</result>
+			  
+			<result name="success">successAdminLogin.jsp</result>
+			<result name="error">errorAdminLogin.jsp</result>
+	</action>-->
+		<action name="studentLogin" class="com.library.view.LibraryAction" method="loginOfStudent">
+			<result name="success">successStudentLogin.jsp</result>
+			<result name="error">errorStudentLogin.jsp</result>
+			<result name="login">errorStudentLogin.jsp</result>
+		</action>
+       <action name="studentLogout" class="com.library.view.StudentLogoutAction">
+		<result name="success">index.jsp</result>
+	   </action>
+		
+		<action name="registerRequest" class="com.library.view.LibraryAction" method="studentRegister">
+			<result name="success">registerStudent.jsp</result>
+		</action>
+
+		<action name="registration" class="com.library.view.LibraryAction" method="registerDone">
+			<result name="success">successStudentRegistration.jsp</result>
+		</action>
+		
+		<action name="availableBooks" class="com.library.view.LibraryAction" method="studentAvailableBooks">
+			<result name="success">studentAvailableBookList.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+       
+        <action name="student_issue_book" class="com.library.view.LibraryAction" method="studentIssueBook">
+			<result name="success">successInBookIssue.jsp</result>
+			<result name="error">errorInBookIssue.jsp</result>
+		</action>
+		
+		<action name="studentActivity" class="com.library.view.LibraryAction" method="reActivityLogin">
+			<result name="success">successStudentLogin.jsp</result>
+		</action>
+		
+		<action name="issuedBooks" class="com.library.view.LibraryAction" method="issuedBooksView">
+			<result name="success">studentIssuedBookList.jsp</result>
+		</action>
+		
+		<action name="previousIssuedBooks" class="com.library.view.LibraryAction" method="previousIssuedBooksView">
+			<result name="success">studentPreviousIssuedBookList.jsp</result>
+		</action>
+		
+	    <action name="return_issued_book" class="com.library.view.LibraryAction" method="returnBookRequest">
+			<result name="success">successInReturningOfBookByStudent.jsp</result>
+			<result name="error">errorInReturningOfBookByStudent.jsp</result>
+		</action>
+		
+	    <action name="approveStudentRegistration" class="com.library.view.LibraryAction" method="approveRegistration">
+			<result name="success">approveStudentLogin.jsp</result>
+		</action>
+	   <action name="approveThisStudent" class="com.library.view.LibraryAction" method="approveStudentLoginData">
+			<result name="success" type="chain">approveStudentRegistration</result>
+			<result name="error"></result>
+		</action>
+	  
+	   <action name="rejectThisStudent" class="com.library.view.LibraryAction" method="rejectStudentLoginData">
+			<result name="success" type="chain">approveStudentRegistration</result>
+			<result name="error"></result>
+		</action>
+	   
+	    <action name="approveBookIssueRequest" class="com.library.view.LibraryAction" method="adminApproveBookIssue">
+			<result name="success">approveBookIssueRequestIndex.jsp</result>
+		</action>
+	    <action name="approveThisBookIssue" class="com.library.view.LibraryAction" method="approveStudentBookIssue">
+			<result name="success">approveBookIssueRequestIndex.jsp</result>
+			<result name="error"></result>
+		</action>
+	  
+	   <action name="rejectThisBookIssue" class="com.library.view.LibraryAction" method="rejectStudentBookIssue">
+			<result name="success">approveBookIssueRequestIndex.jsp</result>
+			<result name="error"></result>
+		</action>
+		
+		 <action name="update_Edit_Book_List" class="com.library.view.LibraryAction" method="updateEditBooks">
+			<result name="success">updateBookList.jsp</result>
+			<result name="error"></result>
+		</action>
+	  
+	     <action name="editThisBook" class="com.library.view.LibraryAction" method="adminEditThisBook">
+			<result name="success">updateEditBookListForm.jsp</result>
+			<result name="error"></result>
+		</action>
+		
+		<action name="updatedone" class="com.library.view.LibraryAction" method="adminUpdatedDoneThisBook">
+			<result name="success">successInBookUpdate.jsp</result>
+			<result name="error"></result>
+		</action>
+		
+	    <action name="dueBalanceList" class="com.library.view.LibraryAction" method="viewTotalDueList">
+			<result name="success">dueBalanceListIndex.jsp</result>
+		</action>
+	     
+	     <action name="particularStudentDue" class="com.library.view.LibraryAction" method="viewTotalDueList">
+			<result name="success">dueBalanceListIndex.jsp</result>
+			<result name="error">errorDueBalanceListIndex.jsp</result>
+		</action>
+	  
+	   <action name="approveBookReturnRequest" class="com.library.view.LibraryAction" method="adminViewReturnList">
+			<result name="success">approveBookReturnRequestIndex.jsp</result>
+		</action>
+	  
+	  <action name="approveThisBookReturn" class="com.library.view.LibraryAction" method="adminApproveBookReturn">
+			<result name="success" type="chain">approveBookReturnRequest</result>
+		</action>
+	  
+	   <action name="wishlisting" class="com.library.view.LibraryAction"  >
+			<result>studentWishlistBook.jsp</result>
+		</action>
+	  	
+	  	<action name="addBookToWishlist" class="com.library.view.LibraryAction" method="addWishlistingBook">
+			<result name="success">SuccessWishlisting.jsp</result>
+		</action>
+	   <action name="view_Wishlisted_Book_List" class="com.library.view.LibraryAction" method="adminViewWishlisting"  >
+			<result>viewWishlistedBookByAdmin.jsp</result>
+		</action>
+	</package>
+</struts>
